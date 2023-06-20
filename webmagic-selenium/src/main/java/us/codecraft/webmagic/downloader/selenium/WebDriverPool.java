@@ -36,27 +36,27 @@ class WebDriverPool {
 
 	private final static int STAT_RUNNING = 1;
 
-	private final static int STAT_CLODED = 2;
+    private final static int STAT_CLODED = 2;
 
-	private AtomicInteger stat = new AtomicInteger(STAT_RUNNING);
+    private AtomicInteger stat = new AtomicInteger(STAT_RUNNING);
 
-	/*
-	 * new fields for configuring phantomJS
-	 */
-	private WebDriver mDriver = null;
-	private boolean mAutoQuitDriver = true;
+    /*
+     * new fields for configuring phantomJS
+     */
+    private WebDriver mDriver = null;
+    private boolean mAutoQuitDriver = true;
 
-	private static final String DEFAULT_CONFIG_FILE = "/data/webmagic/webmagic-selenium/config.ini";
-	private static final String DRIVER_FIREFOX = "firefox";
-	private static final String DRIVER_CHROME = "chrome";
-	private static final String DRIVER_PHANTOMJS = "phantomjs";
+    private static final String DEFAULT_CONFIG_FILE = "/Users/lilou/w/icpu/icpu-third/webmagic/webmagic-selenium/config.ini";
+    private static final String DRIVER_FIREFOX = "firefox";
+    private static final String DRIVER_CHROME = "chrome";
+    private static final String DRIVER_PHANTOMJS = "phantomjs";
 
-	protected static Properties sConfig;
-	protected static DesiredCapabilities sCaps;
+    protected static Properties sConfig;
+    protected static DesiredCapabilities sCaps;
 
-	/**
-	 * Configure the GhostDriver, and initialize a WebDriver instance. This part
-	 * of code comes from GhostDriver.
+    /**
+     * Configure the GhostDriver, and initialize a WebDriver instance. This part
+     * of code comes from GhostDriver.
 	 * https://github.com/detro/ghostdriver/tree/master/test/java/src/test/java/ghostdriver
 	 * 
 	 * @author bob.li.0718@gmail.com

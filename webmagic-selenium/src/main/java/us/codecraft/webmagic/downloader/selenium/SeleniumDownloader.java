@@ -1,12 +1,8 @@
 package us.codecraft.webmagic.downloader.selenium;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -14,9 +10,11 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.downloader.AbstractDownloader;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.PlainText;
+import us.codecraft.webmagic.selector.Selectable;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -98,11 +96,15 @@ public class SeleniumDownloader extends AbstractDownloader implements Closeable 
                 }
             }
 
+
             /*
              * TODO You can add mouse event or other processes
              *
              * @author: bob.li.0718@gmail.com
              */
+            Thread.sleep(1000);
+            ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0," + (40 * 500) + ")");
+            Thread.sleep(1000);
 
             WebElement webElement = webDriver.findElement(By.xpath("/html"));
             String content = webElement.getAttribute("outerHTML");
@@ -111,6 +113,11 @@ public class SeleniumDownloader extends AbstractDownloader implements Closeable 
             page.setHtml(new Html(content, request.getUrl()));
             page.setUrl(new PlainText(request.getUrl()));
             page.setRequest(request);
+            final List<Selectable> nodes = page.getHtml().xpath("//*[@id=\"main\"]/div/div[2]/div[1]/div[2]/div/div[2]/div/div").nodes();
+            for (Selectable node : nodes) {
+                final String image = node.css(".pdd-lazy-image", "data-src").get();
+                System.out.println(image);
+            }
             onSuccess(request, task);
         } catch (Exception e) {
             logger.warn("download page {} error", request.getUrl(), e);

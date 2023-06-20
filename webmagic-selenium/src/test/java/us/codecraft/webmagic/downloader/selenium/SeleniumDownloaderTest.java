@@ -10,29 +10,29 @@ import us.codecraft.webmagic.Task;
 /**
  * @author code4crafter@gmail.com <br>
  * Date: 13-7-26 <br>
- *        Time: 下午2:46 <br>
+ * Time: 下午2:46 <br>
  */
 public class SeleniumDownloaderTest {
 
-	private String chromeDriverPath = "/Users/yihua/Downloads/chromedriver";
+    private String chromeDriverPath = "/Users/lilou/c/chromedriver/chromedriver";
 
-	@Ignore("need chrome driver")
-	@Test
-	public void test() {
-		SeleniumDownloader seleniumDownloader = new SeleniumDownloader(chromeDriverPath);
-		long time1 = System.currentTimeMillis();
-		for (int i = 0; i < 100; i++) {
-			Page page = seleniumDownloader.download(new Request("http://huaban.com/"), new Task() {
-				@Override
-				public String getUUID() {
-					return "huaban.com";
-				}
+    @Ignore("need chrome driver")
+    @Test
+    public void test() {
+        SeleniumDownloader seleniumDownloader = new SeleniumDownloader(chromeDriverPath);
+        long time1 = System.currentTimeMillis();
+        for (int i = 0; i < 1; i++) {
+            Page page = seleniumDownloader.download(new Request("https://app.yangkeduo.com/"), new Task() {
+                @Override
+                public String getUUID() {
+                    return "huaban.com";
+                }
 
-				@Override
-				public Site getSite() {
-					return Site.me();
-				}
-			});
+                @Override
+                public Site getSite() {
+                    return Site.me();
+                }
+            });
 			System.out.println(page.getHtml().$("#waterfall").links().regex(".*pins.*").all());
 		}
 		System.out.println(System.currentTimeMillis() - time1);
