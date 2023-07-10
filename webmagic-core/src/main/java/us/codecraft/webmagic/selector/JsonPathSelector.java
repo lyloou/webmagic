@@ -1,11 +1,12 @@
 package us.codecraft.webmagic.selector;
 
 
+import com.alibaba.fastjson.JSON;
+import com.jayway.jsonpath.JsonPath;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import com.alibaba.fastjson.JSON;
-import com.jayway.jsonpath.JsonPath;
 
 /**
  * JsonPath selector.<br>
@@ -42,7 +43,7 @@ public class JsonPathSelector implements Selector {
                 return toString(list.iterator().next());
             }
         }
-        return object.toString();
+        return toString(object);
     }
 
     private String toString(Object object) {
