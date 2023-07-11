@@ -90,7 +90,7 @@ public class SpiderMonitor {
         }
 
         @Override
-        public void onError(Request request) {
+        public void onError(Request request, Exception e) {
             errorUrls.add(request.getUrl());
             errorCount.incrementAndGet();
         }
