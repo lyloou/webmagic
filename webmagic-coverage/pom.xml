@@ -8,7 +8,7 @@
     <parent>
         <groupId>us.codecraft</groupId>
         <artifactId>webmagic-parent</artifactId>
-        <version>0.8.1-RELEASE</version>
+        <version>0.8.2-RELEASE</version>
     </parent>
 
     <artifactId>webmagic-coverage</artifactId>
@@ -34,11 +34,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>webmagic-scripts</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>webmagic-selenium</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
